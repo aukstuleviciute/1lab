@@ -1,8 +1,14 @@
 package vu.lt.entities;
 
 import javax.persistence.*;
+
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -10,38 +16,31 @@ import java.util.Objects;
         @NamedQuery(name = "Student.findAll", query = "select a from Student as a")
 })
 @Table(name = "STUDENT")
-public class Student implements Serializable {
+@Getter
+@Setter
 
+public class Student implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Size(max = 50)
     @Column(name = "NAME")
+
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
+
+    @ManyToMany
+    @JoinTable(name = "STUDENT_PROJECT")
+    private List<Project> projects = new ArrayList<>();
+
 
     public Student() {
     }
 
-    public Student(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     @Override
     public boolean equals(Object o) {

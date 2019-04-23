@@ -3,19 +3,78 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
 >
-
 <h:head/>
 <h:body>
-    <h2>Students:</h2>
+    <h2>Groups:</h2>
     <ol>
-        <ui:repeat value="#{students.allStudents}" var="student">
-            <li>#{student.name}</li>
+        <ui:repeat value="#{teams.allTeams}" var="team">
+            <li><h:link value="#{team.name}" outcome="students?teamId=#{team.id}" /></li>
         </ui:repeat>
     </ol>
     <h:form>
-        <h:inputText value="#{students.studentToCreate.name}" required="true" />
-        <h:commandButton value="Add new student" action="#{students.createStudent}" />
+        <h:inputText value="#{teams.teamToCreate.name}" required="true" />
+        <h:commandButton value="Add new team" action="#{teams.createTeam}" />
+    </h:form>
+
+    <h2>Projects:</h2>
+    <ol>
+        <ui:repeat value="#{projects.allProjects}" var="project">
+            <li>
+                #{project.name}
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form id="projectForm">
+        <h:inputText value="#{projects.projectToCreate.name}" required="true" />
+        <h:commandButton value="Add new project" action="#{projects.createProject}" />
+    </h:form>
+
+    <h2>Students:</h2>
+    <ol>
+        <ui:repeat value="#{students.allStudents}" var="student">
+            <li>
+                #{student.name}
+                <ul>
+                    <ui:repeat value="#{student.projects}" var="project">
+                        <li>
+                            #{project.name}
+                        </li>
+                    </ui:repeat>
+                </ul>
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form id="studentsForm">
+        <div>
+            <h:outputLabel for="studentName" value="Name: "/>
+            <h:inputText id="studentName" value="#{students.studentToCreate.name}" required="true"/>
+            <h:message for="studentName" style="color: red"/>
+        </div>
+        <div>
+            <h:outputLabel for="teams" value="Teams: "/>
+            <h:selectOneRadio id="teams" value="#{students.studentToCreate.team}"
+                              converter="omnifaces.SelectItemsConverter">
+                <f:selectItems
+                        value="#{teams.allTeams}"
+                        var="team" itemValue="#{team}"
+                        itemLabel="#{team.name}"/>
+            </h:selectOneRadio>
+            <h:message for="teams" style="color: red"/>
+        </div>
+        <div>
+            <h:outputLabel for="projects" value="Projects: "/>
+            <h:selectManyCheckbox id="projects" value="#{students.studentToCreate.projects}"
+                                  converter="omnifaces.SelectItemsConverter">
+                <f:selectItems
+                        value="#{projects.allProjects}"
+                        var="project" itemValue="#{project}"
+                        itemLabel="#{project.name}"/>
+            </h:selectManyCheckbox>
+            <h:message for="projects" style="color: red"/>
+        </div>
+        <h:commandButton value="Add new student" action="#{students.createStudent}"/>
     </h:form>
 </h:body>
 </html>
