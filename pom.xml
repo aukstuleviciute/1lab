@@ -72,7 +72,7 @@
           <artifactId>mybatis-generator-maven-plugin</artifactId>
           <version>1.3.5</version>
           <configuration>
-            <contexts>StudDB</contexts>
+            <contexts>StDB</contexts>
             <verbose>true</verbose>
           </configuration>
           <executions>

@@ -4,7 +4,7 @@
     <!-- see http://tomee.apache.org/datasource-config.html -->
 
     <!-- H2 Database -->
-    <Resource id="StDataSource" type="DataSource">
+    <Resource id="StudentsDataSource" type="DataSource">
         JdbcDriver = org.h2.Driver
         JdbcUrl = jdbc:h2:~/h2database/StDB;AUTO_SERVER=TRUE;
         UserName = admin
