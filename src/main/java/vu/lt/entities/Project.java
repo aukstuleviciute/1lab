@@ -44,6 +44,7 @@ public class Project implements Serializable {
         return Objects.equals(name, project.name);
     }
 
+    //komentaras
     @Override
     public int hashCode() {
         return Objects.hash(name);
