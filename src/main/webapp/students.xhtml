@@ -10,7 +10,9 @@
     <h2>Students working in #{studentsForTeam.team.name} team:</h2>
     <ol>
         <ui:repeat value="#{studentsForTeam.team.students}" var="student">
-            <li>#{student.name}</li>
+            <li>
+                <h:link value="#{student.name} #{student.studentNumber}" outcome="studentDetails?studentId=#{student.id}" />
+            </li>
         </ui:repeat>
     </ol>
     <h:form>

@@ -29,9 +29,16 @@ public class Student implements Serializable {
 
     private String name;
 
+    @Column(name = "STUDENT_NUMBER")
+    private Integer studentNumber;
+
     @ManyToOne
     @JoinColumn(name = "TEAM_ID")
     private Team team;
+
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
 
     @ManyToMany
     @JoinTable(name = "STUDENT_PROJECT")

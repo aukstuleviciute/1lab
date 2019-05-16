@@ -17,4 +17,12 @@ public class StudentsDAO {
     public void persist(Student student){
         this.em.persist(student);
     }
+
+    public Student findOne(Integer id){
+        return em.find(Student.class, id);
+    }
+
+    public Student update(Student student){
+        return em.merge(student);
+    }
 }
