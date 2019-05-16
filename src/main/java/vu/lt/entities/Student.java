@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.johnzon.mapper.JohnzonIgnore;
 
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -32,8 +33,12 @@ public class Student implements Serializable {
     @Column(name = "STUDENT_NUMBER")
     private Integer studentNumber;
 
+    @Column(name = "SCOLARSHIP")
+    private String value;
+
     @ManyToOne
     @JoinColumn(name = "TEAM_ID")
+    //@JohnzonIgnore
     private Team team;
 
     @Version
@@ -42,6 +47,7 @@ public class Student implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "STUDENT_PROJECT")
+    //@JohnzonIgnore
     private List<Project> projects = new ArrayList<>();
 
 

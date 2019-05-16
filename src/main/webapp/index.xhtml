@@ -9,8 +9,9 @@
 <h:body>
     <h2>Groups:</h2>
     <ol>
-        <ui:repeat value="#{teams.allTeams}" var="team">
+        <ui:repeat value="#{teamsMyBatis.allTeams}" var="team">
             <li><h:link value="#{team.name}" outcome="students?teamId=#{team.id}" /></li>
+
         </ui:repeat>
     </ol>
     <h:form>
@@ -27,7 +28,7 @@
         </ui:repeat>
     </ol>
     <h:form id="projectForm">
-        <h:inputText value="#{projects.projectToCreate.name}" required="true" />
+        <h:inputText value="#{projects.projectToCreate.name} " required="true" />
         <h:commandButton value="Add new project" action="#{projects.createProject}" />
     </h:form>
 
@@ -35,7 +36,7 @@
     <ol>
         <ui:repeat value="#{students.allStudents}" var="student">
             <li>
-                #{student.name}
+                #{student.name} #{student.value}
                 <ul>
                     <ui:repeat value="#{student.projects}" var="project">
                         <li>
@@ -74,7 +75,10 @@
             </h:selectManyCheckbox>
             <h:message for="projects" style="color: red"/>
         </div>
+
+
         <h:commandButton value="Add new student" action="#{students.createStudent}"/>
+
     </h:form>
 </h:body>
 </html>

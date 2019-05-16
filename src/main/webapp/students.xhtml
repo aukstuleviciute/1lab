@@ -11,7 +11,7 @@
     <ol>
         <ui:repeat value="#{studentsForTeam.team.students}" var="student">
             <li>
-                <h:link value="#{student.name} #{student.studentNumber}" outcome="studentDetails?studentId=#{student.id}" />
+                <h:link value="#{student.name} #{student.studentNumber} #{student.value}" outcome="studentDetails?studentId=#{student.id}" />
             </li>
         </ui:repeat>
     </ol>

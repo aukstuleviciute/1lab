@@ -1,5 +1,6 @@
 package vu.lt.usecases;
 
+import vu.lt.alternatives.Scolarship;
 import vu.lt.entities.Student;
 import vu.lt.persistence.StudentsDAO;
 import lombok.Getter;
@@ -17,6 +18,9 @@ public class Students implements Serializable {
 
     @Inject
     private StudentsDAO studentsDAO;
+
+    @Inject
+    private Scolarship scolarship;
 
     @Getter
     @Setter
@@ -39,6 +43,7 @@ public class Students implements Serializable {
 
     @Transactional
     public String createStudent() {
+        studentToCreate.setValue(scolarship.ScolarshipType());
         studentsDAO.persist(studentToCreate);
         return "index?faces-redirect=true";
     }

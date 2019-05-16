@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import vu.lt.entities.Student;
 import vu.lt.persistence.StudentsDAO;
-//import vu.lt.interceptors.LoggedInvocation;
+import vu.lt.interceptors.LoggedInvocation;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -37,7 +37,7 @@ public class UpdateStudentDetails implements Serializable {
     }
 
     @Transactional
-    //@LoggedInvocation
+    @LoggedInvocation
     public String updateStudentNumber() {
         try{
             studentsDAO.update(this.student);

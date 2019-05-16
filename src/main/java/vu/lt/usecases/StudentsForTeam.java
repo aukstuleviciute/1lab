@@ -7,6 +7,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.io.Serializable;
 import java.util.Map;
+import vu.lt.interceptors.LoggedInvocation;
 
 import vu.lt.entities.Student;
 import vu.lt.persistence.StudentsDAO;
@@ -41,6 +42,7 @@ public class StudentsForTeam implements Serializable {
     }
 
     @Transactional
+    @LoggedInvocation
     public String createStudent() {
         studentToCreate.setTeam(this.team);
         studentsDAO.persist(studentToCreate);

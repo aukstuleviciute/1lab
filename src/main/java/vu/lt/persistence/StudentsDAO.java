@@ -1,14 +1,14 @@
 package vu.lt.persistence;
 
+import vu.lt.decorators.Persist;
 import vu.lt.entities.Student;
 import javax.inject.Inject;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @ApplicationScoped
-public class StudentsDAO {
+public class StudentsDAO implements Persist {
     @Inject
     private EntityManager em;
     public List<Student> loadAll() {

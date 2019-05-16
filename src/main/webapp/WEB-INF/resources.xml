@@ -2,7 +2,11 @@
 <tomee>
     <!-- see http://tomee.apache.org/containers-and-resources.html -->
     <!-- see http://tomee.apache.org/datasource-config.html -->
-
+    <!--
+    <Service id="johnzon" class-name="org.apache.johnzon.jaxrs.ConfigurableJohnzonProvider">
+        accessMode = field
+    </Service>
+    -->
     <!-- H2 Database -->
     <Resource id="StudentsDataSource" type="DataSource">
         JdbcDriver = org.h2.Driver
