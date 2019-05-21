@@ -69,14 +69,6 @@
       <artifactId>mybatis-cdi</artifactId>
       <version>1.0.0</version>
     </dependency>
-    <!--
-    <dependency>
-    <groupId>org.apache.johnzon</groupId>
-    <artifactId>johnzon-mapper</artifactId>
-    <version>1.0.0</version>
-    <scope>provided</scope>
-  </dependency>
-  -->
     <!-- DeltaSpike CORE -->
     <dependency>
       <groupId>org.apache.deltaspike.core</groupId>
